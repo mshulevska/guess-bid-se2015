@@ -1,0 +1,52 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h2>Include page</h2>
+    <h:form id="form">
+    <p:dataGrid var="auction" value="#{allFunctions.auctions}" columns="4"
+        rows="12"  paginator="true" id="auctions"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Auctions
+        </f:facet>
+ 
+        <p:panel header="#{auction.auctionId}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+ 
+                <h:outputText value="#{auction.auctionTitle}" />
+ 
+                <p:commandLink update=":form:auctionDetails" oncomplete="PF('auctionDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{auction}" target="#{allFunctions.selectedAuction}" />
+                </p:commandLink>
+                 
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Auction Info" widgetVar="auctionDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="auctionDetails" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty allFunctions.selectedAuction}" columnClasses="label,value">
+                
+                <h:outputText value="Seller:" />
+                <h:outputText value="#{allFunctions.selectedAuction.userAuctionEmail.userName}" />
+ 
+                <h:outputText value="EndTime" />
+                <h:outputText value="#{allFunctions.selectedAuction.auctionEndtime}" />
+                
+                <h:outputText value="Description" />
+                <h:outputText value="#{allFunctions.selectedAuction.auctionDesc}" />
+                
+                <p:commandButton value="Go to Auction" id="gotoauction" action="#{allFunctions.goToAuction()}"/>
+                 
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+</ui:composition>
