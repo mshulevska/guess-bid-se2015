@@ -1,16 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <header id="header">
+				<div id="header-inner">	
+					<div id="top-nav">
+                                            <h3>Welcome <h:outputText value="#{userBean.user.userName}" />! | <p:commandLink value="Notifications" action="/notifications.xhtml" ajax="true"/> | <p:commandLink value="Logout" action="#{loginBean.logout()}" id="logout" ajax="true" /></h3>
+                                            
+					</div>
+					<div class="clr"></div>
+				</div>
+			</header>
+    <ui:include src="/header.xhtml" />
+    
     <h:head>
+      
         <title>USER PAGE</title>
-    </h:head>
-    <h:body>
-        <p:commandLink value="Create auction" action="createAuction.xhtml"/>
-        <ui:include src="/user/dataGrid.xhtml" />
         
+    </h:head>
+     <h:body>
+    
+   
+        <div id="content">
+            <div id="content-inner">
+                <p:breadCrumb style="width: 1000px">
+                          <p:menuitem value="Welcome" url="index.xhtml" />
+                          <p:menuitem value="Homepage" url="/user/index.xhtml" />
+                    </p:breadCrumb>
+                        
+                <h3>Time for bidding! Your credit is: <h:outputLabel value="#{userBean.user.userCredit}" />. Do you have something to sell? <p:commandLink value="Create a new auction!" action="createAuction.xhtml"/></h3>
+            </div>
+        </div>
+    <ui:include src="/user/dataGrid.xhtml" />
     </h:body>
-</html>
+    
+    <ui:include src="/footer.xhtml" />
+</ui:composition>
 

@@ -2,12 +2,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Registration</title>
     </h:head>
+    <ui:include src="/header.xhtml" />
+    <div id="content">
+            <div id="content-inner">
+                <p:breadCrumb style="width: 1000px">
+                          <p:menuitem value="Welcome" url="index.xhtml" />
+                          <p:menuitem value="Homepage" url="/user/index.xhtml" />
+                          <p:menuitem value="Register" url="register.xhtml" />
+                    </p:breadCrumb>
+            </div>
+         </div>
+    <center>
     <h:body>
-        <h:form id="registrationform">
+        
+        <h:form id="registrationform" style="width:500px;">
             <p:panel header="Registration Form">
                 <h:panelGrid columns="3" id="regGrid">
                     <h:outputLabel for="name">Name:</h:outputLabel>
@@ -36,5 +49,7 @@
             </p:panel>
         </h:form>
     </h:body>
+    </center>
+    <ui:include src="/footer.xhtml" />
 </html>
 

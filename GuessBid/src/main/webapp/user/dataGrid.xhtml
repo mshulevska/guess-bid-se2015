@@ -4,9 +4,12 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
-    <h2>Include page</h2>
-    <h:form id="form">
-    <p:dataGrid var="auction" value="#{allFunctions.auctions}" columns="4"
+     <div id="content">
+            <div id="content-inner">
+                 <h2>Auction feed</h2>
+         
+    <h:form id="form" style="width: 1000px">
+    <p:dataGrid var="auction" value="#{allFunctions.auctions}" columns="3"
         rows="12"  paginator="true" id="auctions"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
         rowsPerPageTemplate="6,12,16">
@@ -48,5 +51,9 @@
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>
+       
 </h:form>
+    </div>
+     </div>
+
 </ui:composition>

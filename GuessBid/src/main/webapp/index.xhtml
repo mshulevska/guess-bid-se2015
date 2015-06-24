@@ -2,18 +2,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Registration Example</title>
+        <title>Homepage</title>
         <link rel="stylesheet" type="text/css" href="/GuessBid/jsfcrud.xhtml" />
     </h:head>
+    <ui:include src="/header.xhtml" />
     <h:body>
-        <p:link outcome="/user/index.xhtml" value="Go to your personal home page"/><br/>
-  
-    
+        <div id="content">
+            <div id="content-inner">
+                <h3>GuessBid is an application implementing an inverse auction system. An inverse auction works like a regular auction. The difference is that in an inverse auction a user has to propose the lowest unique bid to win the auction. Each user has to guess the lowest bid. Bids can be placed till the bidding closing time. Then they are evaluated by the system. The winner is the user who has placed the lowest unique bid.</h3>
+            </div>
+        </div>
+        
+                <center>
+            
+        <h:form id="loginform" style="width:350px;">
+            <p:panel header="Login Form">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="username" value="Email"/>
+                    <p:inputText id="username" value="#{loginBean.username}" 
+                                 required="true" />
+                    <p:outputLabel for="pass" value="Password"/>
+                    <p:password id="pass" value="#{loginBean.password}" 
+                                required="true" />
+                    <p:commandButton id="submit" action="#{loginBean.login()}" value="Login" ajax="true" update="@all"/>
+                </p:panelGrid>
+            </p:panel>
+            <h:messages  style="color: red"/>
+        </h:form>
+            </center>
+        <div id="content-inner">
+                <h3>If this is your first time using GuessBid, please first <p:link outcome="register" value="Register"/></h3>
+            </div>
+                <p:link outcome="/user/index.xhtml" value="Go to your personal home page"/>
+        
     </h:body>
+     <ui:include src="/footer.xhtml" />
 
-
+			
 
 
 </html>

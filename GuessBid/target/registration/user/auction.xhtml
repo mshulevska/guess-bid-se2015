@@ -5,27 +5,38 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>USER PAGE</title>
+        <title>Auction details</title>
     </h:head>
+    <ui:include src="/header.xhtml" />
     <h:body>
-        
-        
+        <div id="content">
+            <div id="content-inner">
+                <p:breadCrumb style="width: 1000px">
+                          <p:menuitem value="Welcome" url="index.xhtml" />
+                          <p:menuitem value="Homepage" url="/user/index.xhtml" />
+                          <p:menuitem value="Auction Details" url="/user/auction.xhtml" />
+                    </p:breadCrumb>
+            </div>
+         </div>
+        <div id="content-inner">
+                <h3>Auction details</h3>
+            
         <h:form>   
             <p:growl id="growl" showDetail="true" sticky="true" />  
             <p:panelGrid  columns="2" rendered="#{not empty allFunctions.selectedAuction}" columnClasses="label,value">
+                <h:outputText value="Title:" />
+                <h:outputText value="#{allFunctions.selectedAuction.auctionTitle}" />
+                <h:outputText value="Product Name:" />
+                <h:outputText value="#{allFunctions.selectedAuction.auctionProduct}" />
                 
-                
-                <h:outputText value="Seller:" />
-                <h:outputText value="#{allFunctions.selectedAuction.userAuctionEmail.userName}" />
- 
-                <h:outputText value="EndTime" />
-                <h:outputText value="#{allFunctions.selectedAuction.auctionEndtime}" />
                 
                 <h:outputText value="Description" />
                 <h:outputText value="#{allFunctions.selectedAuction.auctionDesc}" />
                 
-                <h:outputText value="Product Name:" />
-                <h:outputText value="#{allFunctions.selectedAuction.auctionProduct}" />
+                <h:outputText value="EndTime" />
+                <h:outputText value="#{allFunctions.selectedAuction.auctionEndtime}" />
+                <h:outputText value="Seller:" />
+                <h:outputText value="#{allFunctions.selectedAuction.userAuctionEmail.userName}" />
                 
                 <h:outputText value="Bid Amount:" />
                 <h:inputText binding="#{bid}"/>
@@ -35,6 +46,10 @@
             
             </p:panelGrid>
           </h:form>
+          </div>
+        
     </h:body>
+    <ui:include src="/footer.xhtml" />
+    
 </html>
 

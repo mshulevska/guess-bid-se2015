@@ -10,6 +10,7 @@ import it.polimi.registration.business.security.entity.User;
 import it.polimi.registration.business.security.entity.Userbid;
 import it.polimi.registration.business.security.entity.UserbidPK;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -76,7 +77,9 @@ public class AllFunctions implements Serializable {
     public String goToAuction(){
         return "auction?faces-redirect=true";
     }
+   
     
+ 
     public void updateBid(String bid,Auction auction, User user ){
         
         if(utilities.isInteger(bid)){

@@ -7,6 +7,17 @@
         <title>Login Page</title>
     </h:head>
     <h:body>
+        <div id="content">
+            <div id="content-inner">
+                <p:breadCrumb style="width: 1000px">
+                          <p:menuitem value="Welcome" url="index.xhtml" />
+                          <p:menuitem value="Homepage" url="/user/index.xhtml" />
+                          <p:menuitem value="Login" url="login.xhtml" />
+                    </p:breadCrumb>
+            </div>
+         </div>
+        <center>
+            
         <h:form id="loginform">
             <p:panel header="Login Form">
                 <p:panelGrid columns="2">
@@ -21,7 +32,8 @@
             </p:panel>
             <h:messages  style="color: red"/>
         </h:form>
-        <p:link outcome="register" value="Register"/>
+            </center>
+        
     </h:body>
 </html>
 
